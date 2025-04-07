@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{% block title %}Базовый шаблон{% endblock %}</title>
+    <link rel="stylesheet" type="text/css" href="/static/css/bootstrap.min.css">
+</head>
+<body class="text-bg-dark">
+{% include 'mailings/header.html' %}
+{% block content %}
+{% endblock %}
+<div class="container">
+  <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
+    <p class="col-md-4 mb-0 text-white">&copy; 2025 Mailings, Inc</p>
+    <ul class="nav col-md-4 justify-content-end">
+      <li class="nav-item"><a href="#" class="nav-link px-2 text-white">О Нас</a></li>
+      <li class="nav-item"><a href="#" class="nav-link px-2 text-white">Контакты</a></li>
+      <li class="nav-item"><a href="#" class="nav-link px-2 text-white">Отзывы</a></li>
+      <li class="nav-item"><a href="#" class="nav-link px-2 text-white">Ваши вопросы, наши ответы</a></li>
+    </ul>
+  </footer>
+</div>
+<script type="text/javascript" src="/static/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

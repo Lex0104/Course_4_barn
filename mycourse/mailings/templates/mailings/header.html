@@ -1,0 +1,30 @@
+<header class="p-3 text-bg-dark">
+    <div class="container">
+      <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom">
+        <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+          <li><a href="/" class="nav-link px-2 text-white">Главная</a></li>
+        </ul>
+          {% if user.is_authenticated %}
+        <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+          <li><a href="/mailing/" class="nav-link px-2 text-white">Рассылки</a></li>
+          <li><a href="/mailing_recipient/" class="nav-link px-2 text-white">Клиенты</a></li>
+          <li><a href="/message/" class="nav-link px-2 text-white">Сообщения</a></li>
+        </ul>
+        <ul class="nav mb-md-0">
+          <li><a href="/user/{{ user.id }}/" class="nav-link px-2 text-white">Профиль</a></li>
+        </ul>
+        <div class="text-end">
+          <form method="post" action=/logout/>
+            {% csrf_token %}
+            <button type="submit" class="btn btn-light me-2">Выйти</button>
+          </form>
+          {% else %}
+        <div class="text-end">
+          <a href="/login/" type="button" class="btn btn-light me-2">Вход</a>
+          <a href="/register/" type="button" class="btn btn-warning">Регистрация</a>
+          {% endif %}
+        </div>
+        </div>
+      </div>
+    </div>
+</header>

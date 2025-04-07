@@ -1,0 +1,23 @@
+{% extends 'mailings/base.html' %}
+
+{% block title %}
+Вход
+{% endblock %}
+
+{% block content %}
+<div class="text-center">
+    <h1>
+        Введите данные для входа
+    </h1>
+</div>
+<form method="post" action="" class="form-floating">
+    <div class="d-flex justify-content-center py-3">
+        <div class="col-6">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="btn btn-outline-success">Войти</button>
+            <a href="/reset_password/" type="button" class="btn btn-outline-secondary">Забыли пароль?</a>
+        </div>
+    </div>
+</form>
+{% endblock %}

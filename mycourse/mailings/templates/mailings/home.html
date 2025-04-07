@@ -1,0 +1,33 @@
+{% extends 'mailings/base.html' %}
+
+{% block title %}Главная{% endblock %}
+
+{% block content %}
+<main class="px-3">
+    <div class="text-center">
+        {% if user.is_authenticated %}
+        <h1>Добро пожаловать, {{ user.email }}!</h1>
+        {% else %}
+        <div class="text-center">
+        <h1>Добро пожаловать в сервис для рассылок!</h1>
+        <p>Чтобы начать пользоваться сервисом, войдите или зарегистрируйтесь.</p>
+        </div>
+        {% endif %}
+        <div class="d-flex justify-content-center py-3">
+            <div class="col-4">
+                <div class="card text-white" style="background-color: black; border: 2px solid white;">
+                    <div class="card-header">
+                        <h3>Общая статистика рассылок</h3>
+                    </div>
+                    <p>Количество всех рассылок: {{ total_mailings }}</p>
+                    <p>Количество активных рассылок: {{ mailings_active }}</p>
+                    <p>Количество уникальных получателей: {{ unique_recipients }}</p>
+                </div>
+                <div class="py-3">
+                    <a class="btn btn-outline-light me-2" href="/mailing/">Отправить рассылку</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+{% endblock %}

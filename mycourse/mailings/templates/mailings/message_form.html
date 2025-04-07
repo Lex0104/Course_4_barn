@@ -1,0 +1,37 @@
+{% extends 'mailings/base.html' %}
+
+{% block title %}
+{% if object %}
+Редактирование сообщения
+{% else %}
+Новое сообщение
+{% endif %}
+{% endblock %}
+
+{% block content %}
+<div class="text-center">
+    <h1>
+        {% if object %}
+        Редактируйте сообщение
+        {% else %}
+        Напишите новое сообщение
+        {% endif %}
+    </h1>
+</div>
+<form method="post" action="" class="form-floating">
+    <div class="d-flex justify-content-center py-3">
+        <div class="col-6">
+            {% csrf_token %}
+            {{ form.as_p }}
+            {% if object %}
+            <button type="submit" class="btn btn-outline-success">Сохранить изменения</button>
+            <a class="link" href="/message/">
+                <button type="button" class="btn btn-outline-danger">Отмена</button>
+            </a>
+            {% else %}
+            <button type="submit" class="btn btn-outline-success">Создать сообщение</button>
+            {% endif %}
+        </div>
+    </div>
+</form>
+{% endblock %}

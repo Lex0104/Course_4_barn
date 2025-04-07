@@ -1,0 +1,27 @@
+{% extends 'mailings/base.html' %}
+
+{% block title %}Пользователи{% endblock %}
+
+{% block content %}
+<div class="text-center mb-4">
+    <h1>Список всех пользователей</h1>
+</div>
+<div class="container">
+  <div class="row align-items-center">
+    {% for user in object_list %}
+    {% if user != request.user %}
+      <div class="col-md-3 mb-3">
+        <div class="card text-white bg-dark" style="border: 2px solid gray;">
+          <div class="card-body text-center">
+                <p>Пользователь: {{ user.email }}</p>
+                <a class="link" href="/user/{{ user.id }}/update/">
+                    <button type="button" class="btn btn-outline-danger btn-sm">Блокировать</button>
+                </a>
+          </div>
+        </div>
+      </div>
+    {% endif %}
+    {% endfor %}
+  </div>
+</div>
+{% endblock %}

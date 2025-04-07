@@ -1,0 +1,27 @@
+{% extends 'mailings/base.html' %}
+
+{% block title %}Клиенты{% endblock %}
+
+{% block content %}
+<div class="text-center mb-4">
+    <h1>Список ваших клиентов</h1>
+    <a class="btn btn-outline-light me-2" href="/mailing_recipient/create/">Добавить клиента</a>
+</div>
+<div class="container">
+  <div class="row align-items-center">
+    {% for recipient in object_list %}
+      <div class="col-md-4 mb-3">
+        <div class="card text-white bg-dark" style="border: 2px solid gray;">
+          <div class="card-body text-center">
+                <p>Email: {{ recipient.email }} </p>
+                <p>Ф.И.О.: {{ recipient.full_name }}</p>
+                <a href="/mailing_recipient/{{ recipient.id }}">
+                    <button type="button" class="btn btn-lg btn-block btn-outline-info btn-sm">Подробнее</button>
+                </a>
+          </div>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+</div>
+{% endblock %}
