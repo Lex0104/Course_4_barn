@@ -155,9 +155,9 @@ LOGOUT_REDIRECT_URL = "/"
 CACHE_ENABLED = True
 if CACHE_ENABLED:
     CACHES = {
-        'default': {
-            'BACKEND': os.getenv("CACHES_BACKEND"),
-            'LOCATION': os.getenv("CACHES_LOCATION"),
+        "default": {
+            "BACKEND": "django.core.cache.backends.redis.RedisCache",
+            "LOCATION": os.getenv ( "CACHES_LOCATION" )
         }
     }
 
