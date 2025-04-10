@@ -3,7 +3,7 @@ from django.contrib.auth.views import (LoginView, LogoutView, PasswordResetCompl
 from django.urls import path, reverse_lazy
 
 from users.apps import UsersConfig
-from users.views import (PasswordResetUserView, UserCreateView, UserDetailView, UsersListView, UserUpdateView,
+from .views import (PasswordResetUserView, UserCreateView, UserDetailView, UsersListView, UserUpdateView,
                          email_verification)
 
 app_name = UsersConfig.name
