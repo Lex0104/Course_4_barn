@@ -18,7 +18,6 @@ class MailingRecipient(models.Model):
         verbose_name = "Получатель рассылки"
         verbose_name_plural = "Получатели рассылки"
         ordering = ["email"]
-        permissions = [("can_view_all_mailing_recipients", "Can view all mailing recipients")]
 
 
 class Message(models.Model):
@@ -35,7 +34,6 @@ class Message(models.Model):
         verbose_name = "Сообщение"
         verbose_name_plural = "Сообщения"
         ordering = ["subject"]
-        permissions = [("can_view_all_messages", "Can view all mailing messages")]
 
 
 class Mailing(models.Model):
