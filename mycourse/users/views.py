@@ -5,7 +5,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.views import PasswordResetView
 from django.core.exceptions import PermissionDenied
 from django.core.mail import send_mail
-from django.shortcuts import get_object_or_404, redirect
+from django.shortcuts import get_object_or_404, redirect, render
 from django.urls import reverse, reverse_lazy
 from django.utils.decorators import method_decorator
 from django.views.decorators.cache import cache_page
@@ -24,12 +24,12 @@ def email_verification(request, token):
     user = get_object_or_404(User, token=token)
     user.is_active = True
     user.save()
-    return redirect(reverse("users:login"))
+    return render ( request, 'users/register.html' )
 
 
 class UserCreateView(CreateView):
     model = User
-    template_name = "register.html"
+    template_name = "users/register.html"
     form_class = UserRegisterForm
     success_url = reverse_lazy("mailings:home")
 

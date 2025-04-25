@@ -1,27 +1,29 @@
 {% extends 'mailings/base.html' %}
 
-{% block title %}Клиенты{% endblock %}
+{% block title %}Клиент - {{ object.full_name }}{% endblock %}
 
 {% block content %}
-<div class="text-center mb-4">
-    <h1>Список ваших клиентов</h1>
-    <a class="btn btn-outline-light me-2" href="/mailing_recipient/create/">Добавить клиента</a>
+<div class="text-center">
+    <h1>
+        Клиент - {{ object.full_name }}
+    </h1>
 </div>
 <div class="container">
-  <div class="row align-items-center">
-    {% for recipient in object_list %}
-      <div class="col-md-4 mb-3">
-        <div class="card text-white bg-dark" style="border: 2px solid gray;">
-          <div class="card-body text-center">
-                <p>Email: {{ recipient.email }} </p>
-                <p>Ф.И.О.: {{ recipient.full_name }}</p>
-                <a href="/mailing_recipient/{{ recipient.id }}">
-                    <button type="button" class="btn btn-lg btn-block btn-outline-info btn-sm">Подробнее</button>
-                </a>
-          </div>
+    <div class="row d-flex justify-content-center">
+        <div class="col-5 text-center py-4 px-5">
+            <div class="card text-white bg-dark" style="border: 2px solid white;">
+                <div class="card-body">
+                    <h6>Email: {{ object.email }}</h6>
+                    <h6>Комментарий: {{ object.comment|default:"-" }}</h6>
+                    {% if object.owner == request.user %}
+                    <div class="row">
+                        <a class="link" href="/mailing_recipient/{{ object.id }}/update/">Редактировать</a>
+                        <a class="link" href="/mailing_recipient/{{ object.id }}/delete/">Удалить</a>
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
         </div>
-      </div>
-    {% endfor %}
-  </div>
+    </div>
 </div>
 {% endblock %}

@@ -10,13 +10,13 @@ app_name = UsersConfig.name
 
 urlpatterns = [
     path("register/", UserCreateView.as_view(), name="register"),
-    path("login/", LoginView.as_view(template_name="login.html"), name="login"),
+    path("login/", LoginView.as_view(template_name="users/login.html"), name="login"),
     path("email-confirm/<str:token>/", email_verification, name="email_confirm"),
     path("logout/", LogoutView.as_view(next_page="mailings:home"), name="logout"),
-    path("reset_password/", PasswordResetUserView.as_view(), name="reset_password"),
+    path("reset_password/", PasswordResetUserView.as_view(template_name="users/reset_password.html"), name="reset_password"),
     path(
         "reset_password/done/",
-        PasswordResetDoneView.as_view(template_name="reset_password_done.html"),
+        PasswordResetDoneView.as_view(template_name="users/reset_password_done.html"),
         name="password_reset_done",
     ),
     path(
