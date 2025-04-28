@@ -1,0 +1,29 @@
+{% extends 'mailings/base.html' %}
+
+{% block title %}
+Редактируйте свой профиль
+{% endblock %}
+
+{% block content %}
+<div class="text-center">
+    <h1>
+        {% if is_self %}
+        Здесь вы можете отредактировать свой профиль.
+        {% elif is_manager %}
+        Заблокируйте пользователя, убрав галочку.
+        {% endif %}
+    </h1>
+</div>
+<form method="post" action="" class="form-floating" enctype="multipart/form-data">
+    <div class="d-flex justify-content-center py-3">
+        <div class="col-4">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="btn btn-outline-success">Сохранить изменения</button>
+            <a class="link" href="/">
+                <button type="button" class="btn btn-outline-danger">Отмена</button>
+            </a>
+        </div>
+    </div>
+</form>
+{% endblock %}

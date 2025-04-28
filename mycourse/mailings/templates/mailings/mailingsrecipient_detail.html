@@ -1,0 +1,29 @@
+{% extends 'mailings/base.html' %}
+
+{% block title %}Клиент - {{ object.full_name }}{% endblock %}
+
+{% block content %}
+<div class="text-center">
+    <h1>
+        Клиент - {{ object.full_name }}
+    </h1>
+</div>
+<div class="container">
+    <div class="row d-flex justify-content-center">
+        <div class="col-5 text-center py-4 px-5">
+            <div class="card text-white bg-dark" style="border: 2px solid white;">
+                <div class="card-body">
+                    <h6>Email: {{ object.email }}</h6>
+                    <h6>Комментарий: {{ object.comment|default:"-" }}</h6>
+                    {% if object.owner == request.user %}
+                    <div class="row">
+                        <a class="link" href="/mailing_recipient/{{ object.id }}/update/">Редактировать</a>
+                        <a class="link" href="/mailing_recipient/{{ object.id }}/delete/">Удалить</a>
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

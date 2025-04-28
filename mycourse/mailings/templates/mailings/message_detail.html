@@ -1,0 +1,26 @@
+{% extends 'mailings/base.html' %}
+
+{% block title %}Сообщение - {{ object.subject }}{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="row d-flex justify-content-center">
+        <div class="col-6 text-center py-4 px-5">
+            <div class="card text-white bg-dark" style="border: 2px solid white;">
+                <div class="card-header">
+                    <h3>Тема письма: {{ object.subject }}</h3>
+                </div>
+                <div class="card-body">
+                    <p>Содержание: {{ object.message }}</p>
+                    {% if object.owner == request.user %}
+                    <div class="row">
+                        <a class="link" href="/message/{{ object.id }}/update/">Редактировать</a>
+                        <a class="link" href="/message/{{ object.id }}/delete/">Удалить</a>
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

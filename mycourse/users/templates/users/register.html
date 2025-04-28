@@ -1,0 +1,22 @@
+{% extends 'mailings/base.html' %}
+
+{% block title %}
+Регистрация
+{% endblock %}
+
+{% block content %}
+<div class="text-center">
+    <h1>
+        Введите данные для регистрации
+    </h1>
+</div>
+<form method="post" action="" class="form-floating">
+    <div class="d-flex justify-content-center py-3">
+        <div class="col-6">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="btn btn-outline-success">Регистрация</button>
+        </div>
+    </div>
+</form>
+{% endblock %}

@@ -1,0 +1,35 @@
+{% extends 'mailings/base.html' %}
+
+{% block title %}Рассылки{% endblock %}
+
+{% block content %}
+<div class="pricing-header pb-md-4 mx-auto text-center">
+    <h1>Список ваших рассылок</h1>
+    <a class="btn btn-outline-light me-2" href="/mailing/create/">Добавить рассылку</a>
+</div>
+<div class="container">
+  <div class="row align-items-center">
+    {% for mailing in object_list %}
+      <div class="col-md-4 mb-3">
+        <div class="card bg-dark text-white" style="border: 2px solid gray;">
+          <div class="card-body text-center">
+            <h5 class="card-title">Сообщение: {{ mailing.message }}</h5>
+            <p class="card-text">Статус: {{ mailing.status }}</p>
+            <div class="d-flex justify-content-between">
+              {% if mailing.owner == request.user %}
+                <form method="post" action="{% url 'mailings:send_mailing' mailing.id %}">
+                  {% csrf_token %}
+                  <button type="submit" class="btn btn-outline-success btn-sm">Отправить</button>
+                </form>
+              {% endif %}
+              <a href="/mailing/{{ mailing.id }}">
+                <button type="button" class="btn btn-outline-info btn-sm">Подробнее</button>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+</div>
+{% endblock %}
