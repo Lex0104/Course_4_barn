@@ -150,6 +150,7 @@ class MessageDeleteView(LoginRequiredMixin, DeleteView):
 
 class MailingsListView(LoginRequiredMixin, ListView):
     model = Mailing
+    login_url = '/login/'
 
     def get_queryset(self):
         queryset = super().get_queryset()

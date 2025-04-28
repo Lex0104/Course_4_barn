@@ -120,3 +120,4 @@ class UsersListView(LoginRequiredMixin, ListView):
         if self.request.user.groups.filter(name="Managers").exists():
             return queryset
         raise PermissionDenied
+
